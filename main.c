@@ -1,5 +1,8 @@
 #include "main.h"
+<<<<<<< HEAD
 #include <locale.h>
+=======
+>>>>>>> c7420f451b79eb79fd72b0e5498a229ce6769d02
 
 int main()
 {

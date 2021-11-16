@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+<<<<<<< HEAD
 #include <time.h>
+=======
+#include <conio.h>
+#include <stdbool.h>
+>>>>>>> c7420f451b79eb79fd72b0e5498a229ce6769d02
 
 #define eFile "events.dat"
 

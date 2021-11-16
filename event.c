@@ -32,49 +32,6 @@ void addToHead(node **head, node *newNode)
     }
 }
 
-event insertEvent(node *head, char *username)
-{
-    char title[TITLE_LENGTH];
-    int AAAA, MM, DD, hh, mm;
-    event e;
-
-    if(head)
-        e.id = findTail(head)->value.id + 1;
-    else
-        e.id = 1;
-
-    strcpy(e.username, username);
-
-    printf("\nTitle: ");
-    fflush(stdin);
-    scanf(" %s", title);
-    // Verify input..?
-    strcpy(e.title, title);
-
-    printf("\nDate: ");
-    fflush(stdin);
-    scanf("%d/%d/%d", &DD, &MM, &AAAA);
-    // Verify input..?
-    e.date.DD = DD;
-    e.date.MM = MM;
-    e.date.AAAA = AAAA;
-
-    printf("\nTime: ");
-    fflush(stdin);
-    scanf("%d:%d", &hh, &mm);
-    // Verify input..?
-    e.date.hh = hh;
-    e.date.mm = mm;
-
-    return e;
-}
-
-void loadEvent(node **head, char *username)
-{
-    node *temp = newNode(insertEvent(*head, username));
-    addToHead(head, temp);
-}
-
 node *findTail(node *head)
 {
     node *tail = head;
@@ -241,15 +198,123 @@ void deleteTail(node **head)
 }
 
 /*******************************
+        EVENTS FUNCTIONS
+*******************************/
+
+char *chooseCat()
+{
+    char input, cats[][10]={"Personal", "Trabajo", "Estudio"};
+    char *cat = (char*)malloc(sizeof(char)*10);
+
+    printf("\nCategoria:");
+    printf("\n 1) Personal");
+    printf("\n 2) Trabajo");
+    printf("\n 3) Estudio");
+
+    fflush(stdin);
+    input=getch();
+    switch(input)
+    {
+        case 49:
+            strcpy(cat, cats[0]);
+            break;
+        case 50:
+            strcpy(cat, cats[1]);
+            break;
+        case 51:
+            strcpy(cat, cats[2]);
+            break;
+    }
+
+    return cat;
+}
+
+int eventActive()
+{
+    char input;
+    bool active;
+
+    printf("\nMarcar como activo? (s/n)");
+    input=getch();
+    switch(input)
+    {
+    case 115:
+        active=true;
+        break;
+    case 110:
+        active=false;
+        break;
+    default:
+        break;
+    }
+
+    return active;
+}
+
+event insertEvent(node *head, char *username)
+{
+    char title[TITLE_LENGTH];
+    int AAAA, MM, DD, hh, mm;
+    event e;
+
+    if(head)
+        e.id = findTail(head)->value.id + 1;
+    else
+        e.id = 1;
+
+    strcpy(e.username, username);
+
+    printf("\nTitle: ");
+    fflush(stdin);
+    scanf(" %s", title);
+    // Verify input..?
+    strcpy(e.title, title);
+
+    printf("\nDate: ");
+    fflush(stdin);
+    scanf("%d/%d/%d", &DD, &MM, &AAAA);
+    // Verify input..?
+    e.date.DD = DD;
+    e.date.MM = MM;
+    e.date.AAAA = AAAA;
+
+    printf("\nTime: ");
+    fflush(stdin);
+    scanf("%d:%d", &hh, &mm);
+    // Verify input..?
+    e.date.hh = hh;
+    e.date.mm = mm;
+
+    strcpy(e.category, chooseCat());
+
+    e.activo = eventActive();
+
+    return e;
+}
+
+void loadEvent(node **head, char *username)
+{
+    node *temp = newNode(insertEvent(*head, username));
+    addToHead(head, temp);
+}
+
+void modifyEvent(node **head)
+{
+    prtEvents(*head);
+}
+
+/*******************************
        PRINTING FUNCTIONS
 *******************************/
 
 void prtEvent(event e)
 {
-    printf("\nID.....: %d", e.id);
-    printf("\nTitle..: %s", e.title);
-    printf("\nDate...: %02d/%02d/%02d", e.date.DD, e.date.MM, e.date.AAAA);
-    printf("\nTime...: %02d:%02d", e.date.hh, e.date.mm);
+    printf("\nID.........: %d", e.id);
+    printf("\nTitulo.....: %s", e.title);
+    printf("\nFecha......: %02d/%02d/%02d", e.date.DD, e.date.MM, e.date.AAAA);
+    printf("\nHora.......: %02d:%02d", e.date.hh, e.date.mm);
+    printf("\nCategoria..: %s", e.category);
+    printf("\nActivo.....: %d", e.activo);
     printf("\n-----------------------");
 }
 

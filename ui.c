@@ -25,6 +25,7 @@ void userExistsMessage()
     Sleep(2000);
 }
 
+<<<<<<< HEAD
 void color(int c) /// CAMBIA EL COLOR DE LA FUENTE
 {
     WORD wColor;
@@ -228,6 +229,14 @@ void hidecursor(int ver)   /// Función para mostrar o esconder el cursor (0:ESCO
 }
 
 /// Muestra las opciones del menú principal (Pre-usuario)
+=======
+void deleteWarningMessage()
+{
+    printf("\nSe perderan todos los datos de manera permanete!");
+    printf("\nEsta seguro que desea continuar? (s/n): ");
+}
+
+>>>>>>> c7420f451b79eb79fd72b0e5498a229ce6769d02
 void mainMenu()
 {
     system("cls");

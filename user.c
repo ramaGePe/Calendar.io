@@ -302,8 +302,8 @@ int confirmDelete()
 {
     int flag=0;
     char input;
-    printf("\nSe perderan todos los datos de forma permanente\n");
-    printf("\nEliminar cuenta? (s/n): ");
+
+    deleteWarningMessage();
     fflush(stdin);
     scanf(" %c", &input);
 
