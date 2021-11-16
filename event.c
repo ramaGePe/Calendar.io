@@ -1,5 +1,6 @@
 #include "event.h"
 
+
 /*******************************
     LIBRARY RELATED FUNCTIONS
 *******************************/
@@ -101,7 +102,7 @@ node *findEvent(node *head, int id)
 
     return head;
 }
-  
+
 int eventExists(node *head, int id)
 {
     int flag = 0;
@@ -264,3 +265,33 @@ void prtEvents(node *head)
 
     printf("\n");
 }
+
+
+
+
+
+
+
+
+/// FUNCION PARA CONTAR EVENTOS POR CATEGORIA
+int countByCategoryAndDay (node * eventList, char * category, struct tm t)
+{
+    int result=0;
+
+    while (eventList!=NULL)
+    {
+        if ((strcmpi(eventList->value.category,category)==0) && (eventList->value.date.AAAA==t.tm_year) && (eventList->value.date.MM==t.tm_mon) && (eventList->value.date.DD==t.tm_mday))
+            result++;
+
+        eventList=eventList->next;
+    }
+
+    return result;
+}
+
+
+
+
+
+
+

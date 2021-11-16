@@ -9,6 +9,9 @@
 #define USER_LENGTH 20
 #define PASS_LENGTH 20
 
+#ifndef USER_H
+#define USER_H
+
 typedef struct
 {
 	char username[USER_LENGTH];
@@ -53,3 +56,6 @@ void prtPostOrder(treeNode *root);
 void gotoxy(int x, int y);
 void prtTree(treeNode *root);
 void prtFile(char *file);
+
+
+#endif // USER_H

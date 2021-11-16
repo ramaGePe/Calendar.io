@@ -1,14 +1,22 @@
 #include "main.h"
-// COMENTARIO LOCO
+#include <locale.h>
+
 int main()
 {
+    setlocale(LC_ALL,"");
+
 	treeNode *root;
 	char input;
 
 	initTree(&root);
 	pullData(uFile, eFile, &root);
 
+    system("cls");
+    UIintro();
+    Sleep(1500);
+
 	do {
+
 		mainMenu();
 		input = getch();
 		switch (input)
@@ -56,6 +64,13 @@ void userLogIn(treeNode **root)
 	{
 		logInMessage();
 		treeNode *temp = findFromUsername(*root, userLog);
+		///------------ imprimo el calendario a partir de la variable userLog -------------
+
+        UIcalendarTable(temp);
+
+		///--------------------------------------------------------------------------------
+
+
 		do {
 			userMenu();
 			input = getch();
