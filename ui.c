@@ -24,6 +24,12 @@ void userExistsMessage()
     Sleep(2000);
 }
 
+void deleteWarningMessage()
+{
+    printf("\nSe perderan todos los datos de manera permanete!");
+    printf("\nEsta seguro que desea continuar? (s/n): ");
+}
+
 void mainMenu()
 {
 	system("cls");
