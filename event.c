@@ -201,6 +201,31 @@ void deleteTail(node **head)
         EVENTS FUNCTIONS
 *******************************/
 
+int newEventPos(node *head)
+{
+    int pos=1;
+
+    while(head)
+    {
+        head=head->next;
+        pos++;
+    }
+
+    return pos;
+}
+
+void redefId(node *head)
+{
+    int pos = 1;
+
+    while(head)
+    {
+        head->value.id = pos;
+        pos++;
+        head=head->next;
+    }
+}
+
 char *chooseCat()
 {
     char input, cats[][10]={"Personal", "Trabajo", "Estudio", "Hogar", "Cumpleaños"};
@@ -242,7 +267,7 @@ int eventActive()
     char input;
     bool active;
 
-    printf("\nMarcar como activo? (s/n)");
+    printf("\n\nMarcar como activo? (s/n)");
     input=getch();
     switch(input)
     {
@@ -265,10 +290,7 @@ event insertEvent(node *head, char *username)
     int AAAA, MM, DD, hh, mm;
     event e;
 
-    if(head)
-        e.id = findTail(head)->value.id + 1;
-    else
-        e.id = 1;
+    e.id = newEventPos(head);
 
     strcpy(e.username, username);
 
@@ -306,9 +328,144 @@ void loadEvent(node **head, char *username)
     addToHead(head, temp);
 }
 
+int chooseEvent(node *head)
+{
+    int idEvent;
+
+    do{
+        printf("\nSeleccione un evento: ");
+        fflush(stdin);
+        scanf("%d", &idEvent);
+    }while(idEvent < 1 || idEvent >= newEventPos(head));
+
+    return idEvent;
+}
+
+void modifyEventMenu(event e)
+{
+    system("cls");
+    prtEvent(e);
+    printf("\n\nModificar:\n");
+    printf("\n 1) Titulo");
+    printf("\n 2) Fecha");
+    printf("\n 3) Hora");
+    printf("\n 4) Categoria");
+    if(e.activo)
+        printf("\n 5) Cambiar a inactivo");
+    else
+        printf("\n 5) Cambiar a activo");
+    printf("\n\n 0) Borrar evento");
+    printf("\n\nESC) Atras");
+}
+
+void modTitle(event *e)
+{
+    printf("\nNuevo titulo: ");
+    fflush(stdin);
+    scanf("%s", e->title);
+}
+
+void modDate(event *e)
+{
+    int AAAA, MM, DD;
+    printf("\nNueva fecha: ");
+    fflush(stdin);
+    scanf("%d/%d/%d", &DD, &MM, &AAAA);
+    // Valid input..??
+    e->date.DD = DD;
+    e->date.MM = MM;
+    e->date.AAAA = AAAA;
+}
+
+void modHour(event *e)
+{
+    int hh, mm;
+    printf("\nNueva hora: ");
+    fflush(stdin);
+    scanf("%d:%d", &hh, &mm);
+    // Valid input..?
+    e->date.hh = hh;
+    e->date.mm = mm;
+}
+
+void modCategory(event *e)
+{
+    strcpy(e->category, chooseCat());
+}
+
+int delEvent()
+{
+    char input;
+    int borrar;
+    printf("\n\nBorrar evento? (s/n)");
+    fflush(stdin);
+    scanf("%c", &input);
+    if(input=='s')
+        borrar=1;
+    else
+        borrar=0;
+
+    return borrar;
+}
+
+int modDelete(node **head, int id)
+{
+    int borrar=0;
+
+    if(delEvent())
+    {
+        borrar=1;
+        deleteEvent(head, id);
+    }
+
+    return borrar;
+}
+
 void modifyEvent(node **head)
 {
-    prtEvents(*head);
+    if(*head)
+    {
+        char input;
+        prtEvents(*head);
+        int id=chooseEvent(*head);
+        node *temp = findEvent(*head, id);
+        do{
+            modifyEventMenu(temp->value);
+            input=getch();
+            switch(input)
+            {
+            case 48:
+                if(modDelete(head, id))
+                {
+                    input=ESC;
+                    redefId(*head);
+                }
+                break;
+            case 49:
+                modTitle(&temp->value);
+                break;
+            case 50:
+                modDate(&temp->value);
+                break;
+            case 51:
+                modHour(&temp->value);
+                break;
+            case 52:
+                modCategory(&temp->value);
+                break;
+            case 53:
+                if(temp->value.activo)
+                    temp->value.activo=false;
+                else
+                    temp->value.activo=true;
+                break;
+            }
+        }while(input!=ESC);
+    }else{
+        printf("\nNo hay eventos cargados...");
+        getch();
+    }
+
 }
 
 /*******************************

@@ -80,16 +80,21 @@ void userLogIn(treeNode **root)
 				loadEvent(&temp->eventList, userLog);
 				break;
 			case 50:
-				system("cls");
+			    system("cls");
+                modifyEvent(&temp->eventList);
+				break;
+			case 51:
+                system("cls");
 				prtEvents(temp->eventList);
 				getch();
 				break;
-			case 51:
-				input = userProfile(root, userLog);
-				break;
             case 52:
+<<<<<<< HEAD
                 system("cls");
                 UIdaily(temp);
+=======
+                input = userProfile(root, userLog);
+>>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
                 break;
 			default:
 				break;

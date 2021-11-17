@@ -14,11 +14,15 @@
 #define USERNAME_LENGTH 20
 #define CAT_LENGTH 20
 
+<<<<<<< HEAD
 #ifndef EVENT_H
 #define EVENT_H
 
 
 
+=======
+#define ESC 27
+>>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
 
 typedef struct
 {
@@ -44,7 +48,6 @@ typedef struct _node
 void initList(node **head);
 node *newNode(event value);
 void addToHead(node **head, node *newNode);
-void loadEvent(node **head, char *username);
 node *findTail(node *head);
 void addToTail(node **head, node *newNode);
 node *findEvent(node *head, int id);
@@ -60,9 +63,17 @@ void deleteList(node **head);
 void fileToList(char *file, node **head, void(*add)(node**,node*));
 node *fusionLists(node **head, node **lista, node *fusion);
 
+void loadEvent(node **head, char *username);
+void modifyEvent(node **head);
+
+void prtEvent(event e);
 void prtEvents(node *head);
+<<<<<<< HEAD
 void prtEventRedux(event e, int x, int y);
 int colorByCategory(event e);
 
 
 #endif // EVENT_H
+=======
+
+>>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
