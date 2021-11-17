@@ -203,13 +203,15 @@ void deleteTail(node **head)
 
 char *chooseCat()
 {
-    char input, cats[][10]={"Personal", "Trabajo", "Estudio"};
-    char *cat = (char*)malloc(sizeof(char)*10);
+    char input, cats[][10]={"Personal", "Trabajo", "Estudio", "Hogar", "Cumpleaños"};
+    char *cat = (char*)malloc(sizeof(char)*CAT_LENGTH);
 
     printf("\nCategoria:");
     printf("\n 1) Personal");
     printf("\n 2) Trabajo");
     printf("\n 3) Estudio");
+    printf("\n 4) Hogar");
+    printf("\n 5) Cumpleaños");
 
     fflush(stdin);
     input=getch();
@@ -223,6 +225,12 @@ char *chooseCat()
             break;
         case 51:
             strcpy(cat, cats[2]);
+            break;
+        case 52:
+            strcpy(cat, cats[3]);
+            break;
+        case 53:
+            strcpy(cat, cats[4]);
             break;
     }
 
@@ -331,21 +339,62 @@ void prtEvents(node *head)
     printf("\n");
 }
 
+void prtEventRedux(event e, int x, int y)
+{
+    int c;
+    c=colorByCategory(e);
 
+    color(7);
+    gotoxy(x-3,y);
+    printf("%d",e.id);
+    color(c);
+    gotoxy(x,y);
+    printf("%s",e.title);
+    gotoxy(x,y+1);
+    printf("%02d:%02d",e.date.hh,e.date.mm);
+    gotoxy(x,y+2);
+    printf("%s",e.category);
+    gotoxy(x,y+3);
+}
 
+int colorByCategory(event e) ///===> DETERMINA EL COLOR CON EL CUAL SE REPRESENTAN LAS DISTINTAS CATEGORIAS
+{
+    char cats[][CAT_LENGTH]= {"Trabajo","Hogar","Estudio","Cumpleaños","Personal"};
+    int color;
+
+    if(e.activo)
+    {
+        if(strcmp(e.category,cats[0])==0)
+            color=1;
+        if(strcmp(e.category,cats[1])==0)
+            color=2;
+        if(strcmp(e.category,cats[2])==0)
+            color=5;
+        if(strcmp(e.category,cats[3])==0)
+            color=6;
+        if(strcmp(e.category,cats[4])==0)
+            color=7;
+    }
+    else
+    {
+        color=4;
+    }
+
+    return color;
+}
 
 
 
 
 
 /// FUNCION PARA CONTAR EVENTOS POR CATEGORIA
-int countByCategoryAndDay (node * eventList, char * category, struct tm t)
+int countByCategoryAndDay (node * eventList, char category[], struct tm t)
 {
     int result=0;
 
     while (eventList!=NULL)
     {
-        if ((strcmpi(eventList->value.category,category)==0) && (eventList->value.date.AAAA==t.tm_year) && (eventList->value.date.MM==t.tm_mon) && (eventList->value.date.DD==t.tm_mday))
+        if ((strcmpi(eventList->value.category,category)==0) && (eventList->value.date.AAAA==t.tm_year+1900) && (eventList->value.date.MM==t.tm_mon+1) && (eventList->value.date.DD==t.tm_mday))
             result++;
 
         eventList=eventList->next;

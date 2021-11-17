@@ -6,7 +6,7 @@
 #include "ui.h"
 #include "pthread.h"
 
-#define ESC 27
+
 
 #ifndef MAIN_H
 #define MAIN_H

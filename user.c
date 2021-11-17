@@ -1,6 +1,5 @@
 #include "user.h"
 
-
 /// TREE LIBRARY FUNCTIONS
 
 void initTree(treeNode **head)
@@ -58,12 +57,28 @@ void insertTreeNode(treeNode **root, treeNode *newNode)
 user insertUser()
 {
     user u;
-
-    printf("\nUsername: ");
+    int x0=42, y0=12;
+    gotoxy(x0,y0);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0,y0+1);
+    puts("X                             X");
+    gotoxy(x0,y0+2);
+    puts("X                             X");
+    gotoxy(x0,y0+3);
+    puts("X                             X");
+    gotoxy(x0,y0+4);
+    puts("X                             X");
+    gotoxy(x0,y0+5);
+    puts("X                             X");
+    gotoxy(x0,y0+6);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0+3,y0+2);
+    printf("Username: ");
     fflush(stdin);
     scanf("%s", u.username);
     // Valid Input...?
-    printf("\nPassword: ");
+    gotoxy(x0+3,y0+4);
+    printf("Password: ");
     fflush(stdin);
     scanf("%s", u.password);
     // Valid Input...?
@@ -264,10 +279,27 @@ char *checkUserLog(treeNode *root, char *username, char *password)
 
 void insertLogIn(char *username, char *password)
 {
-    printf("\nUsername: ");
+    int x0=42, y0=12;
+    gotoxy(x0,y0);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0,y0+1);
+    puts("X                             X");
+    gotoxy(x0,y0+2);
+    puts("X                             X");
+    gotoxy(x0,y0+3);
+    puts("X                             X");
+    gotoxy(x0,y0+4);
+    puts("X                             X");
+    gotoxy(x0,y0+5);
+    puts("X                             X");
+    gotoxy(x0,y0+6);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0+3,y0+2);
+    printf("Username: ");
     fflush(stdin);
     scanf("%s", username);
-    printf("\nPassword: ");
+    gotoxy(x0+3,y0+4);
+    printf("Password: ");
     fflush(stdin);
     scanf("%s", password);
 }

@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
+
 #include <time.h>
-=======
+
 #include <conio.h>
 #include <stdbool.h>
->>>>>>> c7420f451b79eb79fd72b0e5498a229ce6769d02
+
 
 #define eFile "events.dat"
 
@@ -50,7 +50,7 @@ void addToTail(node **head, node *newNode);
 node *findEvent(node *head, int id);
 int eventExists(node *head, int id);
 
-int countByCategoryAndDay (node * eventList, char * category, struct tm t);
+int countByCategoryAndDay (node * eventList, char category[], struct tm t);
 void deleteEvent(node **head, int id);
 void deleteHead(node **head);
 void deleteTail(node **head);
@@ -61,7 +61,8 @@ void fileToList(char *file, node **head, void(*add)(node**,node*));
 node *fusionLists(node **head, node **lista, node *fusion);
 
 void prtEvents(node *head);
-
+void prtEventRedux(event e, int x, int y);
+int colorByCategory(event e);
 
 
 #endif // EVENT_H

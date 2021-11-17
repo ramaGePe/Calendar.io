@@ -1,8 +1,6 @@
 #include "main.h"
-<<<<<<< HEAD
 #include <locale.h>
-=======
->>>>>>> c7420f451b79eb79fd72b0e5498a229ce6769d02
+
 
 int main()
 {
@@ -20,6 +18,7 @@ int main()
 
 	do {
 
+        UIheader();
 		mainMenu();
 		input = getch();
 		switch (input)
@@ -67,14 +66,11 @@ void userLogIn(treeNode **root)
 	{
 		logInMessage();
 		treeNode *temp = findFromUsername(*root, userLog);
-		///------------ imprimo el calendario a partir de la variable userLog -------------
-
-        UIcalendarTable(temp);
-
-		///--------------------------------------------------------------------------------
-
 
 		do {
+            system("cls");
+            UIheader();
+            UIcalendarTable(temp);
 			userMenu();
 			input = getch();
 			switch (input)
@@ -91,6 +87,10 @@ void userLogIn(treeNode **root)
 			case 51:
 				input = userProfile(root, userLog);
 				break;
+            case 52:
+                system("cls");
+                UIdaily(temp);
+                break;
 			default:
 				break;
 			}
