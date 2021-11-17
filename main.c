@@ -89,13 +89,15 @@ void userLogIn(treeNode **root)
 				getch();
 				break;
             case 52:
-<<<<<<< HEAD
+
                 system("cls");
                 UIdaily(temp);
-=======
-                input = userProfile(root, userLog);
->>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
                 break;
+            case 53:
+                system("cls");
+                input = userProfile(root, userLog);
+                break;
+
 			default:
 				break;
 			}

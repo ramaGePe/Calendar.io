@@ -49,10 +49,10 @@
 1637130002 source:c:\dev\calendar.io\ui.c
 	"ui.h"
 
-1637160365 source:d:\desktop (d)\utn\dev\cb_calendar.io\event.c
+1637178408 source:d:\desktop (d)\utn\dev\cb_calendar.io\event.c
 	"event.h"
 
-1637158328 d:\desktop (d)\utn\dev\cb_calendar.io\event.h
+1637178622 d:\desktop (d)\utn\dev\cb_calendar.io\event.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -60,10 +60,10 @@
 	<conio.h>
 	<stdbool.h>
 
-1637171565 source:d:\desktop (d)\utn\dev\cb_calendar.io\ui.c
+1637178774 source:d:\desktop (d)\utn\dev\cb_calendar.io\ui.c
 	"ui.h"
 
-1637168045 d:\desktop (d)\utn\dev\cb_calendar.io\ui.h
+1637178634 d:\desktop (d)\utn\dev\cb_calendar.io\ui.h
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
@@ -86,13 +86,13 @@
 	<ctype.h>
 	<locale.h>
 
-1637171250 source:d:\desktop (d)\utn\dev\cb_calendar.io\user.c
+1637172001 source:d:\desktop (d)\utn\dev\cb_calendar.io\user.c
 	"user.h"
 
 1637171235 source:d:\desktop (d)\utn\dev\cb_calendar.io\util.c
 	"util.h"
 
-1637169556 source:d:\desktop (d)\utn\dev\cb_calendar.io\main.c
+1637179086 source:d:\desktop (d)\utn\dev\cb_calendar.io\main.c
 	"main.h"
 	<locale.h>
 

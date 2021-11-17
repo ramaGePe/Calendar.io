@@ -397,7 +397,7 @@ int delEvent()
 {
     char input;
     int borrar;
-    printf("\n\nBorrar evento? (s/n)");
+    printf("\n\nBorrar evento? (s/n): ");
     fflush(stdin);
     scanf("%c", &input);
     if(input=='s')

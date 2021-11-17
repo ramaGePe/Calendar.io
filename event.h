@@ -14,15 +14,15 @@
 #define USERNAME_LENGTH 20
 #define CAT_LENGTH 20
 
-<<<<<<< HEAD
+
 #ifndef EVENT_H
 #define EVENT_H
 
 
 
-=======
+
 #define ESC 27
->>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
+
 
 typedef struct
 {
@@ -68,12 +68,12 @@ void modifyEvent(node **head);
 
 void prtEvent(event e);
 void prtEvents(node *head);
-<<<<<<< HEAD
+
 void prtEventRedux(event e, int x, int y);
 int colorByCategory(event e);
 
 
 #endif // EVENT_H
-=======
 
->>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
+
+

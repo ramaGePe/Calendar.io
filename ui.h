@@ -17,7 +17,7 @@
 void logOutMessage();
 void logInMessage();
 void logInErrorMessage();
-<<<<<<< HEAD
+
 void userExistsMessage();
 void color(int c);
 void UIintro();
@@ -29,9 +29,7 @@ void UIdaily(treeNode * userNode);
 void dayName(int dayNumber, char day[]);
 void monthName(int monthNumber, char month[]);
 void hidecursor(int ver);
-=======
 void deleteWarningMessage();
->>>>>>> 1397d75eead93cc84f52df2497dda61c57e847df
 void mainMenu();
 void userMenu();
 void profileMenu(user u);
