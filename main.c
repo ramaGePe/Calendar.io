@@ -66,13 +66,17 @@ void userLogIn(treeNode **root)
 				loadEvent(&temp->eventList, userLog);
 				break;
 			case 50:
-				system("cls");
+			    system("cls");
+                modifyEvent(&temp->eventList);
+				break;
+			case 51:
+                system("cls");
 				prtEvents(temp->eventList);
 				getch();
 				break;
-			case 51:
-				input = userProfile(root, userLog);
-				break;
+            case 52:
+                input = userProfile(root, userLog);
+                break;
 			default:
 				break;
 			}

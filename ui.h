@@ -7,6 +7,7 @@
 void logOutMessage();
 void logInMessage();
 void logInErrorMessage();
+void deleteWarningMessage();
 void mainMenu();
 void userMenu();
 void profileMenu(user u);

@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1637033632 source:c:\dev\calendar.io\event.c
+1637133623 source:c:\dev\calendar.io\event.c
 	"event.h"
 
-1637033621 c:\dev\calendar.io\event.h
+1637133307 c:\dev\calendar.io\event.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -24,7 +24,7 @@
 	<stdio.h>
 	<string.h>
 
-1637032159 source:c:\dev\calendar.io\main.c
+1637133454 source:c:\dev\calendar.io\main.c
 	"main.h"
 
 1637031491 c:\dev\calendar.io\main.h
@@ -36,7 +36,7 @@
 	"ui.h"
 	"pthread.h"
 
-1637023786 c:\dev\calendar.io\ui.h
+1637129788 c:\dev\calendar.io\ui.h
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
@@ -46,6 +46,6 @@
 1637023846 source:c:\dev\calendar.io\util.c
 	"util.h"
 
-1637031625 source:c:\dev\calendar.io\ui.c
+1637130002 source:c:\dev\calendar.io\ui.c
 	"ui.h"
 
