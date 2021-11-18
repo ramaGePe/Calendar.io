@@ -31,12 +31,8 @@ int main()
 			loadUser(&root);
 			balanceTree(&root);
 			break;
+        /// IMPRIME ARBOL
 		case 51:
-			system("cls");
-			prtInOrder(root);
-			getch();
-			break;
-		case 52:
 			system("cls");
 			prtTree(root);
 			getch();
@@ -67,23 +63,30 @@ void userInMenu(treeNode **root, char *userLog)
         switch (input)
         {
         case 49:
+            /// CARGAR EVENTO
             system("cls");
             loadEvent(&temp->eventList, userLog);
             break;
         case 50:
+            /// MODIFICAR EVENTO
             system("cls");
             modifyEvent(&temp->eventList);
             break;
-        case 51:
+        case 101:
+            /// IMPRIME EVENTOS
             system("cls");
+            UIheader();
             prtEvents(temp->eventList);
             getch();
             break;
-        case 52:
+        case 113:
+            /// VISTA DIARIA
             system("cls");
+            UIheader();
             UIdaily(temp);
             break;
-        case 53:
+        case 51:
+            /// PERFIL
             system("cls");
             input = userProfile(root, userLog);
             break;
@@ -91,8 +94,11 @@ void userInMenu(treeNode **root, char *userLog)
             break;
         }
     } while (input != ESC);
+
+    logOutMessage();
 }
 
+/// DATOS GENERALES DE ADMIN
 void adminData(treeNode *root)
 {
     color(sec_color);

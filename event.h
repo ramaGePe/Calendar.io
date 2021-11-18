@@ -50,13 +50,15 @@ void loadEvent(node **head, char *username);
 void modifyEvent(node **head);
 
 // PRINTING FUNCTIONS
-void prtEvent(event e);
+void prtEvent(event e, int x0 , int y0);
 void prtEvents(node *head);
 
 int countByCategoryAndDay (node * eventList, char category[], struct tm t);
 void prtEventRedux(event e, int x, int y);
 int colorByCategory(event e);
 
+extern void gotoxy(int x, int y);
+extern void color(int c);
 
 #endif // EVENT_H
 

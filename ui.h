@@ -22,7 +22,7 @@ void userExistsMessage();
 void deleteWarningMessage();
 
 void UIintro();
-void *UIheader();
+void UIheader();
 void UIcalendarTable(treeNode * userNode);
 void UIcalendarHeader (int x0, int y0);
 void UIcalendarPrtLines (int x0, int y0);

@@ -105,10 +105,10 @@
 	"ui.h"
 	"pthread.h"
 
-1637222917 source:c:\dev\cb_calendar.io\ui.c
+1637267687 source:c:\dev\cb_calendar.io\ui.c
 	"ui.h"
 
-1637222933 c:\dev\cb_calendar.io\ui.h
+1637261257 c:\dev\cb_calendar.io\ui.h
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
@@ -124,7 +124,7 @@
 	<stdbool.h>
 	<string.h>
 
-1637223558 c:\dev\cb_calendar.io\event.h
+1637266417 c:\dev\cb_calendar.io\event.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -144,13 +144,13 @@
 1637223573 source:c:\dev\cb_calendar.io\util.c
 	"util.h"
 
-1637221173 source:c:\dev\cb_calendar.io\event.c
+1637266300 source:c:\dev\cb_calendar.io\event.c
 	"event.h"
 
-1637223726 source:c:\dev\cb_calendar.io\user.c
+1637267811 source:c:\dev\cb_calendar.io\user.c
 	"user.h"
 
-1637223641 source:c:\dev\cb_calendar.io\main.c
+1637267346 source:c:\dev\cb_calendar.io\main.c
 	"main.h"
 
 1637223204 c:\dev\cb_calendar.io\main.h
@@ -161,4 +161,61 @@
 	<conio.h>
 	<locale.h>
 	"ui.h"
+
+1637270369 source:d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\event.c
+	"event.h"
+
+1637266417 d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\event.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<conio.h>
+	<stdbool.h>
+
+1637267346 source:d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\main.c
+	"main.h"
+
+1637223204 d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\main.h
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<locale.h>
+	"ui.h"
+
+1637261257 d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\ui.h
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<string.h>
+	<pthread.h>
+	"user.h"
+
+1637223347 d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\user.h
+	"event.h"
+	"util.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+
+1637202192 d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\util.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<ctype.h>
+	<locale.h>
+
+1637267687 source:d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\ui.c
+	"ui.h"
+
+1637267811 source:d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\user.c
+	"user.h"
+
+1637223573 source:d:\desktop (d)\utn\cuatrimestre 2\programación y lab 2\tp final calendar.io\build final\cb_calendar.io\util.c
+	"util.h"
 

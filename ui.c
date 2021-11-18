@@ -3,7 +3,8 @@
 
 void logOutMessage()
 {
-    printf("\nCERRANDO SESION...\n");
+    gotoxy(49,20);
+    printf("CERRANDO SESION...\n");
     Sleep(2000);
 }
 
@@ -29,7 +30,7 @@ void logInErrorMessage()
 
 void userExistsMessage()
 {
-    printf("\nNombre de usuario ya existente! Elije otro...\n");
+    printf("Nombre de usuario ya existente! Elije otro...\n");
     Sleep(2000);
 }
 
@@ -56,18 +57,18 @@ void UIintro() ///MUESTRA "CALENDAR.IO" COMO BIENVENIDA AL PROGRAMA
     gotoxy(x0,y0);
     puts("   ___      _                _                  _       ");
     gotoxy(x0,y0+1);
-    puts("  / __\\\__ _| | ___ _ __   __| | __ _ _ __      (_) ___  ");
+    puts("  / __\\__ _| | ___ _ __   __| | __ _ _ __      (_) ___  ");
     gotoxy(x0,y0+2);
-    puts(" / /  / _` | |/ _ \\\ '_ \\\ / _` |/ _` | '__|     | |/ _ \\\ ");
+    puts(" / /  / _` | |/ _ \\ '_ \\ / _` |/ _` | '__|     | |/ _ \\ ");
     gotoxy(x0,y0+3);
     puts("/ /__| (_| | |  __/ | | | (_| | (_| | |     _  | | (_) |");
     gotoxy(x0,y0+4);
-    puts("\\\____/\\\__,_|_|\\\___|_| |_|\\\__,_|\\\__,_|_|    (_) |_|\\\___/ ");
+    puts("\\____/\\__,_|_|\\___|_| |_|\\__,_|\\__,_|_|    (_) |_|\\___/ ");
 
     hidecursor(0);
 }
 
-void *UIheader()
+void UIheader()
 {
     color(main_color);
     system("cls");
@@ -87,8 +88,6 @@ void *UIheader()
     printf("||");
     gotoxy(0,3);
     puts("=======================================================================================================================");
-
-    return NULL;
 }
 
 void showTime() /// MUESTRA EL MES, EL DIA DE LA SEMANA Y LA HORA ACTUAL
@@ -289,7 +288,7 @@ void UIcalendarPrtLines (int x0, int y0)
 
 void prtEventsByDay (node * eventList, struct tm t)
 {
-    int x0=30,y0=8,cont;
+    int x0=30,y0=9,cont;
 
     while (eventList!=NULL)
     {
@@ -317,7 +316,7 @@ void prtEventsByDay (node * eventList, struct tm t)
 
 void UIdaily(treeNode * userNode)
 {
-    int x0=33,y0=6;
+    int x0=33,y0=7;
     char day[DAY_LENGTH];
     int input;
 
@@ -379,6 +378,7 @@ void UIdaily(treeNode * userNode)
     while (input!=ESC);
 
 }
+
 
 void dayName(int dayNumber, char day[]) /// LE ASIGNA NOMBRES A LAS VARIABLES DEFINIDAS EN STRUCT TIME QUE REFIEREN AL DIA DE LA SEMANA
 {
@@ -451,7 +451,6 @@ void monthName(int monthNumber, char month[]) /// LO MISMO PERO CON LOS MESES...
     }
 }
 
-
 void hidecursor(int ver)   /// Función para mostrar o esconder el cursor (0:ESCONDE, 1:MUESTRA)
 {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -465,10 +464,12 @@ void hidecursor(int ver)   /// Función para mostrar o esconder el cursor (0:ESCO
 
 void deleteWarningMessage()
 {
-    printf("\nSe perderan todos los datos de manera permanete!");
-    printf("\nEsta seguro que desea continuar? (s/n): ");
+    system("cls");
+    gotoxy(30,14);
+    printf("Se perderan todos los datos de manera permanente!");
+    gotoxy(30,15);
+    printf("Esta seguro que desea eliminar el perfil? (s/n): ");
 }
-
 
 void mainMenu()
 {
@@ -489,12 +490,99 @@ void mainMenu()
     gotoxy(75,27);
     printf("Crear Cuenta");
 
+    /// VVVV Funciones activas todavía VVVV
+
 //    color(7);
 //    printf("\n 1) Log in");
 //    printf("\n 2) Crear usuario");
 //    printf("\n 3) Lista usuarios");
 //    printf("\n 4) Ver Arbol");
 //    printf("\n\n  ESC) Salir\n");
+}
+
+/// Muestra la vista de usuario loggeado
+void userMenu()
+{
+    color(sec_color);
+    gotoxy(5,27);
+    puts(" 1)");
+    color(main_color);
+    gotoxy(10,27);
+    printf("Crear Evento");
+    color(sec_color);
+    gotoxy(28,27);
+    puts(" 2)");
+    color(main_color);
+    gotoxy(33,27);
+    printf("Modificar Evento");
+    color(sec_color);
+    gotoxy(55,27);
+    puts(" 3)");
+    color(main_color);
+    gotoxy(60,27);
+    printf("Perfil");
+    color(main_color);
+    gotoxy(101,27);
+    printf("Ver Eventos");
+    gotoxy(96,27);
+    color(sec_color);
+    printf(" E)");
+    gotoxy(73,27);
+    color(sec_color);
+    printf(" Q)");
+    gotoxy(78,27);
+    color(main_color);
+    printf("Vista Diaria");
+//	printf("\n 1) Crear evento");
+//	printf("\n 2) Modificar evento");
+//	printf("\n 3) Ver eventos");
+//	printf("\n 4) Vista Diaria");
+//	printf("\n 5) Perfil");
+//	printf("\n\n  ESC) Salir\n");
+
+}
+
+void profileMenu(user u)
+{
+    int x0=40,y0=6;
+
+    system("cls");
+    gotoxy(x0,y0);
+    puts("X********************************************X");
+    gotoxy(x0,y0+1);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+2);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+3);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+4);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+5);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+6);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+7);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+8);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+9);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+10);
+    puts("XX                                          XX");
+    gotoxy(x0,y0+11);
+    puts("X/******************************************\\X");
+
+    gotoxy(x0+15, y0+6);
+    printf("Username: %s", u.username);
+    gotoxy(x0+15, y0+7);
+    printf("Password: %s", u.password);
+
+    gotoxy(x0+12,y0+2);
+    printf(" 1) Cambiar password");
+    gotoxy(x0+12,y0+3);
+    printf(" 2) Borrar cuenta");
+//    gotoxy(x0+12,y0+4);
+//    printf("  ESC) Atras");
 }
 
 void adminMenu()
@@ -515,27 +603,6 @@ void adminMenu()
 	printf("3)");
 	color(main_color);	gotoxy(95,27);
 	printf("Arbol usuarios");
-}
-
-/// Muestra la vista de usuario loggeado
-void userMenu()
-{
-	printf("\n 1) Crear evento");
-	printf("\n 2) Modificar evento");
-	printf("\n 3) Ver eventos");
-	printf("\n 4) Vista Diaria");
-	printf("\n 5) Perfil");
-	printf("\n\n  ESC) Salir\n");
-}
-
-void profileMenu(user u)
-{
-    system("cls");
-    printf("\nCALENDAR.IO\n");
-    prtUser(u);
-    printf("\n 1) Cambiar password");
-    printf("\n 2) Borrar cuenta");
-    printf("\n\n  ESC) Atras\n");
 }
 
 void dragonKing()

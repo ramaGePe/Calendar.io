@@ -225,7 +225,23 @@ void forceBalanceTree(treeNode **root)
  // ====> USER SPECIFIC FUNCTIONS <==== //
 /////////////////////////////////////////
 
-user insertUser()
+int userExists(treeNode *root, char *username)
+{
+    int flag=0;
+
+    if(findFromUsername(root,username))
+    {
+        flag=1;
+        gotoxy(54,14);
+        printf("           ");
+        gotoxy(38,22);
+        userExistsMessage();
+    }
+
+    return flag;
+}
+
+user insertUser(treeNode *root)
 {
     user u;
     int x0=42, y0=12;
@@ -243,23 +259,24 @@ user insertUser()
     puts("X                             X");
     gotoxy(x0,y0+6);
     puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    gotoxy(x0+3,y0+2);
-    printf("Username: ");
-    fflush(stdin);
-    scanf("%s", u.username);
+    do{
+        gotoxy(x0+3,y0+2);
+        printf("Username: ");
+        fflush(stdin);
+        scanf("%s", u.username);
+    }while(userExists(root, u.username));
     // Valid Input...?
     gotoxy(x0+3,y0+4);
     printf("Password: ");
     fflush(stdin);
     scanf("%s", u.password);
-    // Valid Input...?
 
     return u;
 }
 
 void loadUser(treeNode **root)
 {
-    treeNode *temp = newTreeNode(insertUser());
+    treeNode *temp = newTreeNode(insertUser(*root));
     insertTreeNode(root, temp);
 }
 
@@ -338,7 +355,8 @@ char *logIn(treeNode *root)
 char *genPassword()
 {
     char *password=(char*)malloc(sizeof(char)*PASS_LENGTH);
-    printf("\nNuevo password: ");
+    gotoxy(52,15);
+    printf("Nuevo password: ");
     fflush(stdin);
     scanf(" %s", password);
     // Valid Input...?
