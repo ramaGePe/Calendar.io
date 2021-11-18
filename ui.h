@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <string.h>
+#include <pthread.h>
 #include "user.h"
 
 #define DAY_LENGTH 10
@@ -17,11 +18,11 @@
 void logOutMessage();
 void logInMessage();
 void logInErrorMessage();
-
 void userExistsMessage();
-void color(int c);
+void deleteWarningMessage();
+
 void UIintro();
-void UIheader();
+void *UIheader();
 void UIcalendarTable(treeNode * userNode);
 void UIcalendarHeader (int x0, int y0);
 void UIcalendarPrtLines (int x0, int y0);
@@ -29,9 +30,17 @@ void UIdaily(treeNode * userNode);
 void dayName(int dayNumber, char day[]);
 void monthName(int monthNumber, char month[]);
 void hidecursor(int ver);
-void deleteWarningMessage();
+void showTime();
+
+void adminMenu();
 void mainMenu();
 void userMenu();
 void profileMenu(user u);
+
+void dragonKing();
+void adminLogo();
+
+void color(int c);
+void gotoxy(int x, int y);
 
 #endif // UI_H

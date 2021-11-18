@@ -67,7 +67,7 @@ void UIintro() ///MUESTRA "CALENDAR.IO" COMO BIENVENIDA AL PROGRAMA
     hidecursor(0);
 }
 
-void UIheader()
+void *UIheader()
 {
     color(main_color);
     system("cls");
@@ -87,6 +87,8 @@ void UIheader()
     printf("||");
     gotoxy(0,3);
     puts("=======================================================================================================================");
+
+    return NULL;
 }
 
 void showTime() /// MUESTRA EL MES, EL DIA DE LA SEMANA Y LA HORA ACTUAL
@@ -285,6 +287,33 @@ void UIcalendarPrtLines (int x0, int y0)
     }
 }
 
+void prtEventsByDay (node * eventList, struct tm t)
+{
+    int x0=30,y0=8,cont;
+
+    while (eventList!=NULL)
+    {
+        if(eventList->value.date.DD==t.tm_mday && eventList->value.date.MM==(t.tm_mon+1)
+                && eventList->value.date.AAAA==(t.tm_year+1900)
+                && eventList->value.activo==1)
+        {
+
+            prtEventRedux(eventList->value,x0,y0);
+            cont++;
+            if (cont==5)
+            {
+                x0=30;
+                y0+=4;
+                cont=0;
+            }
+            else
+                x0+=20;
+
+        }
+
+        eventList=eventList->next;
+    }
+}
 
 void UIdaily(treeNode * userNode)
 {
@@ -350,36 +379,6 @@ void UIdaily(treeNode * userNode)
     while (input!=ESC);
 
 }
-
-void prtEventsByDay (node * eventList, struct tm t)
-{
-    int i,x0=30,y0=8,cont;
-
-    while (eventList!=NULL)
-    {
-        if(eventList->value.date.DD==t.tm_mday && eventList->value.date.MM==(t.tm_mon+1)
-                && eventList->value.date.AAAA==(t.tm_year+1900)
-                && eventList->value.activo==1)
-        {
-
-            prtEventRedux(eventList->value,x0,y0);
-            cont++;
-            if (cont==5)
-            {
-                x0=30;
-                y0+=4;
-                cont=0;
-            }
-            else
-                x0+=20;
-
-        }
-
-        eventList=eventList->next;
-    }
-}
-
-
 
 void dayName(int dayNumber, char day[]) /// LE ASIGNA NOMBRES A LAS VARIABLES DEFINIDAS EN STRUCT TIME QUE REFIEREN AL DIA DE LA SEMANA
 {
@@ -498,17 +497,35 @@ void mainMenu()
 //    printf("\n\n  ESC) Salir\n");
 }
 
+void adminMenu()
+{
+	color(sec_color);
+	gotoxy(12,27);
+	printf("1)");
+	color(main_color);
+	gotoxy(17,27);
+	printf("Ingresar a una cuenta");
+	color(sec_color);	gotoxy(55,27);
+	printf("2)");
+	color(main_color);
+	gotoxy(60,27);
+	printf("Lista usuarios");
+	color(sec_color);
+	gotoxy(90,27);
+	printf("3)");
+	color(main_color);	gotoxy(95,27);
+	printf("Arbol usuarios");
+}
+
 /// Muestra la vista de usuario loggeado
 void userMenu()
 {
-
 	printf("\n 1) Crear evento");
 	printf("\n 2) Modificar evento");
 	printf("\n 3) Ver eventos");
 	printf("\n 4) Vista Diaria");
 	printf("\n 5) Perfil");
 	printf("\n\n  ESC) Salir\n");
-
 }
 
 void profileMenu(user u)
@@ -519,4 +536,52 @@ void profileMenu(user u)
     printf("\n 1) Cambiar password");
     printf("\n 2) Borrar cuenta");
     printf("\n\n  ESC) Atras\n");
+}
+
+void dragonKing()
+{
+    int x=65, y=7;
+
+    color(sec_color);
+    gotoxy(x,y);
+    puts("        ,     \\    /      ,        ");
+    gotoxy(x,y+1);
+    puts("       / \\    )\\__/(     / \\       ");
+    gotoxy(x,y+2);
+    puts("      /   \\  (_\\  /_)   /   \\      ");
+    gotoxy(x,y+3);
+    puts(" ____/_____\\__\\@  @/___/_____\\____ ");
+    gotoxy(x,y+4);
+    puts("|             |\\../|              |");
+    gotoxy(x,y+5);
+    puts("|              \\VV/               |");
+    gotoxy(x,y+6);
+    puts("|  One account to rule them all!  |");
+    gotoxy(x,y+7);
+    puts("|_________________________________|");
+    gotoxy(x,y+8);
+    puts(" |    /\\ /      \\\\       \\ /\\    | ");
+    gotoxy(x,y+9);
+    puts(" |  /   V        ))       V   \\  | ");
+    gotoxy(x,y+10);
+    puts(" |/     `       //        '     \\| ");
+    gotoxy(x,y+11);
+    puts(" `              V                ' ");
+    color(main_color);
+}
+
+void adminLogo()
+{
+    int x=20, y=7;
+
+    gotoxy(x,y);
+    puts("            _           _       ");
+    gotoxy(x,y+1);
+    puts("   __ _  __| |_ __ ___ (_)_ __  ");
+    gotoxy(x,y+2);
+    puts("  / _` |/ _` | '_ ` _ \\| | '_ \\ ");
+    gotoxy(x,y+3);
+    puts(" | (_| | (_| | | | | | | | | | |");
+    gotoxy(x,y+4);
+    puts("  \\__,_|\\__,_|_| |_| |_|_|_| |_|");
 }

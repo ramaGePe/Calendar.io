@@ -3,10 +3,8 @@
 #include <windows.h>
 #include <string.h>
 #include <conio.h>
+#include <locale.h>
 #include "ui.h"
-#include "pthread.h"
-
-
 
 #ifndef MAIN_H
 #define MAIN_H

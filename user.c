@@ -1,6 +1,10 @@
 #include "user.h"
 
-/// TREE LIBRARY FUNCTIONS
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // ====> ABB LIB FUNCTIONS <===== //
+////////////////////////////////////
+
 
 void initTree(treeNode **head)
 {
@@ -52,44 +56,6 @@ void insertTreeNode(treeNode **root, treeNode *newNode)
         if(strcmp((*root)->val.username, newNode->val.username)>0)
             insertTreeNode(&(*root)->left, newNode);
     }
-}
-
-user insertUser()
-{
-    user u;
-    int x0=42, y0=12;
-    gotoxy(x0,y0);
-    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    gotoxy(x0,y0+1);
-    puts("X                             X");
-    gotoxy(x0,y0+2);
-    puts("X                             X");
-    gotoxy(x0,y0+3);
-    puts("X                             X");
-    gotoxy(x0,y0+4);
-    puts("X                             X");
-    gotoxy(x0,y0+5);
-    puts("X                             X");
-    gotoxy(x0,y0+6);
-    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    gotoxy(x0+3,y0+2);
-    printf("Username: ");
-    fflush(stdin);
-    scanf("%s", u.username);
-    // Valid Input...?
-    gotoxy(x0+3,y0+4);
-    printf("Password: ");
-    fflush(stdin);
-    scanf("%s", u.password);
-    // Valid Input...?
-
-    return u;
-}
-
-void loadUser(treeNode **root)
-{
-    treeNode *temp = newTreeNode(insertUser());
-    insertTreeNode(root, temp);
 }
 
 int countNodes(treeNode *root)
@@ -255,7 +221,47 @@ void forceBalanceTree(treeNode **root)
 }
 
 
-/// USERS SPECIFIC FUNCTIONS
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // ====> USER SPECIFIC FUNCTIONS <==== //
+/////////////////////////////////////////
+
+user insertUser()
+{
+    user u;
+    int x0=42, y0=12;
+    gotoxy(x0,y0);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0,y0+1);
+    puts("X                             X");
+    gotoxy(x0,y0+2);
+    puts("X                             X");
+    gotoxy(x0,y0+3);
+    puts("X                             X");
+    gotoxy(x0,y0+4);
+    puts("X                             X");
+    gotoxy(x0,y0+5);
+    puts("X                             X");
+    gotoxy(x0,y0+6);
+    puts("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    gotoxy(x0+3,y0+2);
+    printf("Username: ");
+    fflush(stdin);
+    scanf("%s", u.username);
+    // Valid Input...?
+    gotoxy(x0+3,y0+4);
+    printf("Password: ");
+    fflush(stdin);
+    scanf("%s", u.password);
+    // Valid Input...?
+
+    return u;
+}
+
+void loadUser(treeNode **root)
+{
+    treeNode *temp = newTreeNode(insertUser());
+    insertTreeNode(root, temp);
+}
 
 char *checkUserLog(treeNode *root, char *username, char *password)
 {
@@ -304,13 +310,29 @@ void insertLogIn(char *username, char *password)
     scanf("%s", password);
 }
 
+bool adminLog(char *username, char *password)
+{
+    bool esAdmin=false;
+
+    if(strcmp(username, ADMIN_USER)==0 && strcmp(password, ADMIN_PASS)==0)
+    {
+        esAdmin=true;
+    }
+
+    return esAdmin;
+}
+
 char *logIn(treeNode *root)
 {
-    char username[USER_LENGTH], password[PASS_LENGTH];
+    char *username=(char*)malloc(sizeof(char)*USER_LENGTH);
+    char password[PASS_LENGTH];
 
-    insertLogIn(username,password);
+    insertLogIn(username, password);
 
-    return checkUserLog(root, username, password);
+    if(adminLog(username, password))
+        return username;
+    else
+        return checkUserLog(root, username, password);
 }
 
 char *genPassword()
@@ -447,25 +469,32 @@ void pushData(char *usrFile, char *eveFile, treeNode *root)
     pushEvents(eveFile, root);
 }
 
-// ====> PRINTING FUNCTIONS <==== //
+int countAllEvents(treeNode *root)
+{
+    int cant=0;
+
+    if(root)
+    {
+        cant+=countAllEvents(root->left);
+        cant+=countAllEvents(root->right);
+        cant+=countListNodes(root->eventList);
+    }
+
+    return cant;
+}
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // ====> PRINTING FUNCTIONS <==== //
+////////////////////////////////////
+
 
 void prtUser(user u)
 {
     printf("\nUsername: %s", u.username);
     printf("\nPassword: %s", u.password);
-    printf("\n-----------------------");
+    printf("\n-------------------");
 }
-
-void prtPreOrder(treeNode *root)
-{
-    if(root)
-    {
-        prtUser(root->val);
-        prtPreOrder(root->left);
-        prtPreOrder(root->right);
-    }
-}
-
 void prtInOrder(treeNode *root)
 {
     if(root)
@@ -476,16 +505,6 @@ void prtInOrder(treeNode *root)
     }
 }
 
-void prtPostOrder(treeNode *root)
-{
-    if(root)
-    {
-        prtPostOrder(root->left);
-        prtPostOrder(root->right);
-        prtUser(root->val);
-    }
-}
-
 void prtUtil(treeNode *root, int space)
 {
     if (root == NULL)
@@ -493,32 +512,17 @@ void prtUtil(treeNode *root, int space)
 
     space += 10;
     prtUtil(root->right, space);
-    printf("\n");
+    puts("");
 
     for (int i = 10; i < space; i++)
         printf(" ");
 
-    printf("%s\n", root->val.username);
+    printf("%s", root->val.username);
+    puts("");
     prtUtil(root->left, space);
 }
 
 void prtTree(treeNode *root)
 {
    prtUtil(root, 0);
-}
-
-void prtFile(char *file)
-{
-    FILE *pFile = fopen(file, "rb");
-    user u;
-
-    if(pFile)
-    {
-        while(fread(&u, sizeof(u), 1, pFile))
-        {
-            prtUser(u);
-        }
-
-        fclose(pFile);
-    }
 }

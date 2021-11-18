@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <time.h>
-
 #include <conio.h>
 #include <stdbool.h>
-
 
 #define eFile "events.dat"
 
@@ -14,15 +11,10 @@
 #define USERNAME_LENGTH 20
 #define CAT_LENGTH 20
 
-
 #ifndef EVENT_H
 #define EVENT_H
 
-
-
-
 #define ESC 27
-
 
 typedef struct
 {
@@ -45,30 +37,23 @@ typedef struct _node
 	struct _node *next;
 } node;
 
+// LISTS LIB FUNCTIONS
 void initList(node **head);
 node *newNode(event value);
 void addToHead(node **head, node *newNode);
-node *findTail(node *head);
-void addToTail(node **head, node *newNode);
-node *findEvent(node *head, int id);
-int eventExists(node *head, int id);
-
-int countByCategoryAndDay (node * eventList, char category[], struct tm t);
+int countListNodes(node *head);
 void deleteEvent(node **head, int id);
-void deleteHead(node **head);
-void deleteTail(node **head);
-void addInOrder(node **head, node *newNode);
-int sumValues(node *head);
 void deleteList(node **head);
-void fileToList(char *file, node **head, void(*add)(node**,node*));
-node *fusionLists(node **head, node **lista, node *fusion);
 
+// EVENT SPEC FUNCTIONS
 void loadEvent(node **head, char *username);
 void modifyEvent(node **head);
 
+// PRINTING FUNCTIONS
 void prtEvent(event e);
 void prtEvents(node *head);
 
+int countByCategoryAndDay (node * eventList, char category[], struct tm t);
 void prtEventRedux(event e, int x, int y);
 int colorByCategory(event e);
 

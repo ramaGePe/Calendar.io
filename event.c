@@ -1,6 +1,5 @@
 #include "event.h"
 
-
 /*******************************
     LIBRARY RELATED FUNCTIONS
 *******************************/
@@ -32,21 +31,6 @@ void addToHead(node **head, node *newNode)
     }
 }
 
-node *findTail(node *head)
-{
-    node *tail = head;
-
-    if(tail)
-    {
-        while(tail->next)
-        {
-            tail = tail->next;
-        }
-    }
-
-    return tail;
-}
-
 node *findEvent(node *head, int id)
 {
     if(head)
@@ -58,38 +42,6 @@ node *findEvent(node *head, int id)
     }
 
     return head;
-}
-
-int eventExists(node *head, int id)
-{
-    int flag = 0;
-
-    if(head)
-    {
-        while(head && head->value.id != id)
-        {
-            head = head->next;
-        }
-
-        if(head && head->value.id == id)
-        {
-            flag = 1;
-        }
-    }
-
-    return flag;
-}
-
-void addToTail(node **head, node *newNode)
-{
-    if(!(*head))
-    {
-        *head = newNode;
-    }else
-    {
-        node *tail = findTail(*head);
-        tail->next = newNode;
-    }
 }
 
 void deleteEvent(node **head, int id)
@@ -118,32 +70,17 @@ void deleteEvent(node **head, int id)
     }
 }
 
-void addInOrder(node **head, node *newNode)
+int countListNodes(node *head)
 {
-    if(*head == NULL)
-    {
-        *head = newNode;
-    }else
-    {
-        if(*head && newNode->value.id <= (*head)->value.id)
-        {
-            newNode->next = (*head);
-            (*head) = newNode;
-        }else
-        {
-            node *temp = (*head);
-            node *prev;
+    int cant=0;
 
-            while(temp && temp->value.id <= newNode->value.id)
-            {
-                prev = temp;
-                temp = temp->next;
-            }
-
-            prev->next = newNode;
-            newNode->next = temp;
-        }
+    while(head)
+    {
+        cant++;
+        head=head->next;
     }
+
+    return cant;
 }
 
 void deleteList(node **head)
@@ -156,42 +93,6 @@ void deleteList(node **head)
         {
             temp = (*head);
             (*head) = (*head)->next;
-            free(temp);
-        }
-    }
-}
-
-void deleteHead(node **head)
-{
-    if(*head)
-    {
-        node *temp = (*head);
-        (*head) = (*head)-> next;
-        free(temp);
-    }
-}
-
-void deleteTail(node **head)
-{
-    if(*head)
-    {
-        if((*head)->next == NULL)
-        {
-            node *temp = (*head);
-            (*head) = (*head)->next;
-            free(temp);
-        }else
-        {
-            node *temp = (*head);
-            node *prev;
-
-            while(temp->next)
-            {
-                prev = temp;
-                temp = temp->next;
-            }
-
-            prev->next = NULL;
             free(temp);
         }
     }
@@ -540,10 +441,6 @@ int colorByCategory(event e) ///===> DETERMINA EL COLOR CON EL CUAL SE REPRESENT
     return color;
 }
 
-
-
-
-
 /// FUNCION PARA CONTAR EVENTOS POR CATEGORIA
 int countByCategoryAndDay (node * eventList, char category[], struct tm t)
 {
@@ -559,10 +456,3 @@ int countByCategoryAndDay (node * eventList, char category[], struct tm t)
 
     return result;
 }
-
-
-
-
-
-
-
